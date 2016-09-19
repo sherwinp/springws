@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-1.5.xsd">
+
+	<bean name="webserviceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+		<property name="interceptors">
+			<list>
+				<ref local="wsSecurityInterceptor" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="wsSecurityInterceptor"
+		class="org.springframework.ws.soap.security.wss4j.Wss4jSecurityInterceptor">
+
+		<property name="securementActions" value="UsernameToken Timestamp Signature" />
+
+		<property name="securementUsername" value="mra" />
+		<property name="securementPassword" value="mra1" />
+		<property name="securementSignatureCrypto" ref="crypto" />
+		<property name="securementSignatureParts">
+				<value>
+					{Content}{http://schemas.xmlsoap.org/soap/envelope/}Body
+				</value>
+		</property>
+		<property name="securementSignatureKeyIdentifier" value="DirectReference" />
+		
+		<property name="validationSignatureCrypto" ref="clientTrustStore" />
+
+	</bean>
+	<bean id="crypto" class="org.springframework.ws.soap.security.wss4j.support.CryptoFactoryBean">
+		<property name="keyStorePassword" value="mra123" />
+		<property name="keyStoreLocation" value="classpath:/mra.jks" />
+	</bean>
+	
+	<bean id="clientTrustStore" class="org.springframework.ws.soap.security.wss4j.support.CryptoFactoryBean">
+        <property name="keyStorePassword" value="changeit" />
+        <property name="keyStoreLocation" value="file:/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/security/cacerts" />
+    </bean>
+    
+</beans>

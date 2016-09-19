@@ -1,0 +1,7 @@
+<xwss:JAXRPCSecurity xmlns:xwss="http://java.sun.com/xml/ns/xwss/config">
+<xwss:Service>
+        <xwss:SecurityConfiguration  dumpMessages="true">
+        	 <xwss:RequireUsernameToken  passwordDigestRequired="false" nonceRequired="false" />
+        </xwss:SecurityConfiguration>
+</xwss:Service>
+</xwss:JAXRPCSecurity>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.springwssample.org/types" xmlns:tns="http://www.springwssample.org/types" elementFormDefault="qualified">
+<element name="SendMessageRequest">
+  <complexType>
+    <sequence>
+      <element name="country" type="string"/>
+    </sequence>
+  </complexType>
+</element>
+
+<element name="SendMessageResponse">
+  <complexType>
+    <sequence>
+      <element name="city" type="string"/>
+      <element name="country" type="string"/>
+      <element name="isDeliver" type="boolean"/>
+    </sequence>
+  </complexType>
+</element>
+</schema>

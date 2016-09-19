@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="" href="">
+    <information>
+        <title>Demo WebViewSample</title>
+        <vendor>TechLyric</vendor>
+        <icon href="sometree-icon.jpg"/>
+        <offline-allowed/>
+    </information>
+    <security>
+    <all-permissions/>
+   </security>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.8+" href="http://java.sun.com/products/autodl/j2se"/>
+        <jar href="http://localhost:8080/springws/resources/webviewsample.jar" main="true" />
+
+    </resources>
+    <application-desc
+         name="Demo WebViewSample Application"
+         main-class="webviewsample.WebViewSample"
+         width="400"
+         height="400">
+     </application-desc>
+     <update check="background"/>
+</jnlp>
